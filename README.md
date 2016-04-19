@@ -166,6 +166,50 @@ the cluster id, and keypair:
 --r53-zone my.hosted.domain --rhsm-user my_redhat_user --rhsm-pass my_redhat_pass
 ```
 
+## How it looks when it runs and when it's done
+```
+PLAY RECAP ********************************************************************
+Update current package set -------------------------------------------- 198.78s
+pre-pull images ------------------------------------------------------- 159.20s
+openshift_examples | Copy openshift examples --------------------------- 81.61s
+Wait for the deployer to finish ---------------------------------------- 78.96s
+Register host ---------------------------------------------------------- 43.94s
+Wait for registry to be running ---------------------------------------- 34.72s
+openshift_node | Install Node package ---------------------------------- 33.47s
+openshift_master_certificates | file  ---------------------------------- 33.39s
+openshift_common | Install the base package for versioning ------------- 26.43s
+openshift_examples | Remove old xpaas templates from filesystem -------- 23.31s
+ec2-52-38-7-222.us-west-2.compute.amazonaws.com : ok=259  changed=77   unreachable=0    failed=0
+ec2-52-39-104-180.us-west-2.compute.amazonaws.com : ok=582  changed=220  unreachable=0    failed=0
+ec2-52-39-106-224.us-west-2.compute.amazonaws.com : ok=113  changed=37   unreachable=0    failed=0
+ec2-52-39-5-220.us-west-2.compute.amazonaws.com : ok=259  changed=77   unreachable=0    failed=0
+ec2-52-39-89-162.us-west-2.compute.amazonaws.com : ok=113  changed=37   unreachable=0    failed=0
+localhost                  : ok=35   changed=0    unreachable=0    failed=0
+```
+```
+PLAY RECAP ********************************************************************
+Wait to scale smoke app for first deployment -------------------------- 156.01s
+Scale smoke app -------------------------------------------------------- 12.12s
+Create user smoke test projects ----------------------------------------- 8.57s
+Create "app" in smoke projects ------------------------------------------ 7.85s
+Expose smoke project service -------------------------------------------- 5.65s
+Create the users -------------------------------------------------------- 4.64s
+Launch the CloudFormation Template -------------------------------------- 1.21s
+Add nodes to requisite groups ------------------------------------------- 1.10s
+Find current projects list ---------------------------------------------- 0.97s
+wait for ssh ------------------------------------------------------------ 0.54s
+ec2-52-38-7-222.us-west-2.compute.amazonaws.com : ok=2    changed=1    unreachable=0    failed=0
+ec2-52-39-104-180.us-west-2.compute.amazonaws.com : ok=8    changed=7    unreachable=0    failed=0
+ec2-52-39-5-220.us-west-2.compute.amazonaws.com : ok=2    changed=1    unreachable=0    failed=0
+localhost                  : ok=7    changed=0    unreachable=0    failed=0
+
+Your cluster provisioned successfully. The console is available at https://openshift.demo.alberttwong.com:8443
+You can SSH into a master using the same SSH key with: ssh -i /path/to/key.pem openshift@openshift-master.demo.alberttwong.com
+```
+
+Expect about 30 minutes for the install. 
+
+
 ## Access the Environment
 If the installation and configuration completes successfully, you will see
 something like the following:
