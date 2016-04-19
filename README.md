@@ -113,6 +113,12 @@ export AWS_ACCESS_KEY_ID=foo
 export AWS_SECRET_ACCESS_KEY=bar
 ```
 
+### Make sure SSH Agent is running
+SSH agent has to be running. If you're not sure, run `ps -ef|grep ssh` and you should see the "ssh-agent" running.
+```
+exec /usr/bin/ssh-agent $SHELL
+```
+
 ### Add the SSH Key to the SSH Agent
 You will need to add the private key to your SSH agent: 
 ```
