@@ -105,6 +105,10 @@ git checkout openshift-ansible-3.0.47-6
 ```
 
 ## Usage
+
+### Pick your AWS Region
+You have to pick which region to deploy your OpenShift installation.   Specify or modify 'run.py' with the correct AWS region and corresponding AMI. 
+
 ### Export the EC2 Credentials
 You will need to export your EC2 credentials before attempting to use the
 scripts:
@@ -114,7 +118,7 @@ export AWS_SECRET_ACCESS_KEY=bar
 ```
 
 ### Add the SSH Key to the SSH Agent
-You will need to add the private key to your SSH agent: 
+Create your EC2 Key Pair with name "default" in the AWS Region you picked.  You will need to add the private key to your SSH agent: 
 ```
 ssh-add <path to key file>
 ```
@@ -137,8 +141,8 @@ should be used:
     | AMI           | Amazon Region  |
     | ---           | ---            |
     | ami-2051294a* | us-east-1*     |
-    | ami-d1315fb1  | us-west-1      |
-    | ami-775e4f16  | us-west-2      |
+    | ami-d1315fb1  | us-west-1      | N. California
+    | ami-775e4f16  | us-west-2      | Oregon 
     | ami-8b8c57f8  | eu-west-1      |
     | ami-875042eb  | eu-central-1   |
     | ami-0dd8f963  | ap-northeast-1 |
@@ -164,6 +168,11 @@ the cluster id, and keypair:
 ```
 ./run.py --no-confirm --cluster-id my_cluster --keypair my_keypair \
 --r53-zone my.hosted.domain --rhsm-user my_redhat_user --rhsm-pass my_redhat_pass
+```
+
+More complex version
+```
+./run.py --no-confirm --cluster-id openshift --num-nodes 1 --keypair default --r53-zone alberttwong.com --rhsm-user alwong@redhat.com --rhsm-pass n0n34u --region us-west-1 --ami ami-d1315fb1 --run-smoke-tests --num-smoke-test-users 5 
 ```
 
 ## Access the Environment
@@ -210,3 +219,6 @@ un-listed error, simply execute `run.py` again with the same exact options.
 #### Cloudformation
 On occasion the Cloudformation stack will fail to delete properly. Simply go
 into the AWS console and find the Cloudformation stack and delete it.
+
+#### When all hope is lost
+Most likely it's because you have existing settings in your AWS region.  Pick another AWS region and start over. 
