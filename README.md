@@ -65,6 +65,7 @@ In order to use these scripts, you will need to set a few things up.
 - [Python Click](https://github.com/mitsuhiko/click) version 4.0 or greater
 - [Python Boto](http://docs.pythonboto.org) version 2.38.0 or greater
 - [Ansible](https://github.com/ansible/ansible) version 1.9.4
+- pyopenssl
 
 Python and the Python dependencies may be installed via your OS' package manager
 (eg: python-click on Fedora/CentOS/RHEL) or via
