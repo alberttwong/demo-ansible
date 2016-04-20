@@ -65,12 +65,20 @@ In order to use these scripts, you will need to set a few things up.
 - [Python Click](https://github.com/mitsuhiko/click) version 4.0 or greater
 - [Python Boto](http://docs.pythonboto.org) version 2.38.0 or greater
 - [Ansible](https://github.com/ansible/ansible) version 1.9.4
-- pyopenssl
+- pyopenssl version 0.15.1
 
 Python and the Python dependencies may be installed via your OS' package manager
 (eg: python-click on Fedora/CentOS/RHEL) or via
 [pip](https://pypi.python.org/pypi/pip). [Python
 virtualenv](https://pypi.python.org/pypi/virtualenv) can also work.
+
+Example of installation of packaged software
+```
+pip install click
+pip install boto
+pip install ansible
+pip install pyopenssl
+```
 
 ### GitHub Repositories
 While the demo-ansible scripts are contained in a GitHub repository, the rest of
